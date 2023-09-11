@@ -1,49 +1,15 @@
 {% extends 'base.html' %}
-{% block title %}Cars and more Cars{% endblock %}
-{%block content %}
-<div class="slider">
-    <div class="slides">
-
-        <input type="radio" name="radio-btn" id="radio1">
-        <input type="radio" name="radio-btn" id="radio1">
-        <input type="radio" name="radio-btn" id="radio1">
-        <input type="radio" name="radio-btn" id="radio1">
-        <input type="radio" name="radio-btn" id="radio1">
-        <input type="radio" name="radio-btn" id="radio1">
-        <input type="radio" name="radio-btn" id="radio1">
-        <input type="radio" name="radio-btn" id="radio1">
-        <input type="radio" name="radio-btn" id="radio1">
-        <input type="radio" name="radio-btn" id="radio1">
-
-        <div class="slide-first">
-            <img src="#" alt="#">
-        </div>
-        <div class="slide">
-            <img src="#" alt="#">
-        </div>
-        <div class="slide">
-            <img src="#" alt="#">
-        </div>
-        <div class="slide">
-            <img src="#" alt="#">
-        </div>
-        <div class="slide">
-            <img src="#" alt="#">
-        </div>
-        <div class="slide">
-            <img src="#" alt="#">
-        </div>
-        <div class="slide">
-            <img src="#" alt="#">
-        </div>
-        <div class="slide">
-            <img src="#" alt="#">
-        </div>
-        <div class="slide">
-            <img src="#" alt="#">
-        </div>
-        <div class="slide">
-            <img src="#" alt="#">
-        </div>
-    </div>
-</div>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+{% block title %}Cars n more Cars{% endblock %}
+{% block content %}
+<div class="container">
+  <img src="/car-repo/car/images/Range-rover.webp" alt="">
+  
+    <div class="section1"><img src="/car-repo/car/images/Range-rover.webp" alt=""></div>
+    <div class="section2"><img src="/car-repo/car/images/toyota.jfif" alt=""></div>
+    <div class="section3"><img src="/car-repo/car/images/volkswagen.jpg" alt=""></div>
+    <div class="section4"><img src="/car-repo/car/images/ford.jfif" alt=""></div>
+  </div>
+{% endblock %}
