@@ -1,15 +1,12 @@
 {% extends 'base.html' %}
 <head>
-    <link rel="stylesheet" href="style.css">
 </head>
 {% block title %}Cars n more Cars{% endblock %}
 {% block content %}
+<body>
 <div class="container">
-  <img src="/car-repo/car/images/Range-rover.webp" alt="">
-  
-    <div class="section1"><img src="/car-repo/car/images/Range-rover.webp" alt=""></div>
-    <div class="section2"><img src="/car-repo/car/images/toyota.jfif" alt=""></div>
-    <div class="section3"><img src="/car-repo/car/images/volkswagen.jpg" alt=""></div>
-    <div class="section4"><img src="/car-repo/car/images/ford.jfif" alt=""></div>
+  <img src="{{ item.image.url }}" class="rounded-t-xl">
   </div>
+</body>
 {% endblock %}
+
