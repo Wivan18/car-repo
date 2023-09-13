@@ -23,6 +23,13 @@ class car(models.Model):
     image = models.ImageField(upload_to='car_images', null=False)
     def __str__(self):
        return self.name
+    
+class brand(models.Model):
+    name = models.CharField('Brand',max_length=50)
+    image = models.ImageField(upload_to='carbrands', null=False)
+    def __str__(self):
+       return self.name
+    
 
 
 

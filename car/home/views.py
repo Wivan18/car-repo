@@ -1,13 +1,37 @@
 from django.shortcuts import render,redirect
-from sell.models import category,car
+from sell.models import *
 
 def index(request):
     return render(request, 'base.html')
 
+
+
 def home(request):
-    return render(request, 'home.html')
+    cars = car.objects.all()
+    brands = brand.objects.all()
+
+    context = {
+        'cars':cars,
+        'brands':brands,
+    }
+
+    return render(request, 'home.html',context)
+
+
+
 def buy(request):
-    return render(request, 'buy.html')
+
+    cars = car.objects.all()
+    brands = brand.objects.all()
+
+    context = {
+        'cars':cars,
+        'brands':brands,
+    }
+
+    return render(request, 'buy.html',context)
     
+
+
 def sell(request):
     return render(request, 'sell.html')
