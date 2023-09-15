@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from sell.models import *
 from home.forms import SignupForm, LoginForm
+from django.contrib.auth import authenticate, login
 
 
 
@@ -59,3 +60,8 @@ def signup(request):
     }
 
     return render (request, 'signup.html',context)
+
+
+
+
+     

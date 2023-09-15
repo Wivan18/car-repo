@@ -1,10 +1,32 @@
 {% extends 'base.html' %}
 {% block title %}
-Sell Cars and more Cars!!
+Sell Car!
 {% endblock %}
 
-{%block content %}
-<body>
-<a href="#" class="m-4 px-5 py-5 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Sell</a>
-</body>
+
+
+{% block content %}
+<h1 class="mb-6 text-3xl"> {{ title }}</h1>
+
+<form method="post" action="." enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="space-y-4">
+        {{ form.as_p }}
+    </div>
+        {% if form.errors or form.non_field_errors %}
+            <div class="mb-3 p-6 bg-red-100 rounded-xl">
+
+                {% for field in errors %}
+                    {{ field.errors }}
+                {% endfor %} 
+
+                {{form.non_field_errors }}
+            </div>
+        {% endif  %}
+
+    <button class="py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl">Post</button>
+
+</form>
+
 {% endblock %}
