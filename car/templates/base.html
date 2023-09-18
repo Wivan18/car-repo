@@ -13,19 +13,20 @@
     </head>
 
     <body class="">
-        <nav class="mb-6 py-6 px-6 flex justify-between items-center border-b bg-blue-200"">
-           
-              <a href="{% url 'home:home' %}" class="text-blue-500 hover:text-purple-700">Home</a></li>
-              <a href="{% url 'home:sell' %}" class="text-blue-500 hover:text-purple-700">Sell</a></li>
-              <a href="{% url 'home:buy' %}" class="text-blue-500 hover:text-purple-700">Buy</a></li>
-           
+        <nav class="py-6 px-6 flex justify-between items-center border-b border-gray-200 bg-gray-800"">
+            <a href="{% url 'home:home' %}" class="text-blue-500 hover:text-purple-700">Home</a></li>
+            <div class="space-x-6">
+
+                <a href="{% url 'home:buy' %}" class="px-8 py-3 text-lg font-semibold bg-gray-700 text-white rounded-xl hover:bg-purple-500 hover:text-black-700">Buy</a></li>
+                <a href="{% url 'sell:new' %}" class="px-8 py-3 text-lg font-semibold bg-gray-700 text-white rounded-xl hover:bg-purple-500 hover:text-black-700">Sell</a></li>
+              
             {% if request.user.is_authenticated %} 
-                <a href="#" class="px-3 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Inbox</a>
-                <a href="#" class="px-3 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Dashboard</a>
+                
             {% else %}
                 <a href="{% url 'home:signup' %}" class="px-3 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Sign Up</a>
                 <a href="{% url 'home:login' %}" class="px-3 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Log In</a>
         {% endif %}
+            </div>
         </nav>
         {% block content %}
             <div>

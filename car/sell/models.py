@@ -11,10 +11,21 @@ class category(models.Model):
 
     def __str__(self):
         return self.name
+    
+class brand(models.Model):
+    name = models.CharField('Category Name', max_length=40)
+    image = models.ImageField(upload_to='carbrands2', null=False)
+    #description = models.TextField('Description of the car size',null=True)
+
+    def __str__(self):
+        return self.name
+    
+
 
 class car(models.Model):
     name = models.CharField('Name of the car', max_length=250)
     category = models.ForeignKey(category, related_name='cars', on_delete=models.CASCADE, null=True)
+    brand = models.ForeignKey(brand,related_name='cars', on_delete=models.CASCADE, null=True)
     description = models.TextField('Description of the car:')
     price = models.FloatField('Price')
     is_sold = models.BooleanField(default=False)
@@ -24,12 +35,7 @@ class car(models.Model):
     def __str__(self):
        return self.name
     
-class brand(models.Model):
-    name = models.CharField('Brand',max_length=50)
-    image = models.ImageField(upload_to='carbrands', null=False)
-    def __str__(self):
-       return self.name
-    
+
 
 
 
