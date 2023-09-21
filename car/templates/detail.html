@@ -1,29 +1,32 @@
-{% extends 'core/base.html' %}
+{% extends 'base.html' %}
  
-{% block title %}{{ item.name }}{% endblock %}
+{% block title %}{{ cars.name }}{% endblock %}
 
 
 {% block content %}
-    <div class="grid grid-cols-5 gap-6">
+    <div class="grid grid-cols-5 gap-6 px-6 py-6 ">
         <div class="col-span-3">
-            <img src="{{ car.image.url }}" class="rounded-xl">
+            <img src="{{ cars.image.url }}" class="rounded-xl">
         </div>
 
         <div class="col-span-2 p-6 bg-gray-100 rounded-xl">
             <h1 class="mb-6 text-3xl">{{car.name}}</h1>
-            <p class="text-gray-500"><strong>Price:</strong>{{ car.price }}</p>
-            <p class="text-gray-500"><strong>Seller:</strong>{{ item.created_by.username }}</p>
+            <p class="text-gray-500"><strong>Price:</strong>{{ cars.price }}</p>
+            <p class="text-gray-500"><strong>Engine Capacity(CC):</strong>{{ cars.engine_capacity }}</p>
 
-            {% if item.description %}
+
+            
                 <p class="text-gray-700">
                     <strong class="text-gray-500">Description:</strong><br>
-                    {{ car.description }}
+                    {{ cars.description }}
                 </p>
-            {% endif %}
+                <p class="text-gray-500"><strong>Seller:</strong>{{ cars.created_by.username }}</p>
 
-            {% if request.user == item.created_by %}
+        
+
+            {% if request.user == car.created_by %}
                 <div class="mt-6 p-6 bg-white rounded-xl">
-                    <p>This is your item</p>
+                    <p>This is your car</p>
                     <a href="#" class="inline-block mt-6 px-6 py-3 text-lg font-semigold bg-teal-500 text-white rounded-xl">Edit</a>
                     <a href="#" class="inline-block mt-6 px-6 py-3 text-lg font-semigold bg-red-500 text-white rounded-xl">Delete</a>
                 </div>
@@ -34,11 +37,11 @@
         </div>
     </div>
     <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
-        <h2 class="mb-12 text-2xl text-center">Related Items</h2> 
+        <h2 class="mb-12 text-2xl text-center">Related cars</h2> 
         <div class="grid grid-cols-3 gap-3">
-            {% for item in related_items %}
+            {% for car in Other_cars %}
                 <div>
-                    <a href="{% url 'sell:detail' item.id%} ">
+                    <a href="{% url 'sell:detail' car.id%} ">
                         <div>
                             <img src="{{ car.image.url }}" class="rounded-t-xl">
                         </div>

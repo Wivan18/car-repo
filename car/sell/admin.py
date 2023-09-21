@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(category)
 admin.site.register(car)
 admin.site.register(brand)
+admin.site.register(engine_capacity)
