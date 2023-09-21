@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block title %}Buy
+{% endblock %}
+
+{% block content %}
+    <div class="pb-6 grid grid-cols-4 gap-4 bg-gray-200">
+        <div class="col-span-1 mt-6 ">
+            <form method="get" action="{% url 'home:buy' %}">
+                <input name="query" class="w-full py-4 px-6 border rounded-xl" type="text" value="{{ query }}" placeholder="Find your dream car.....">
+                <button class="mt-2 py-4 px-8 text-lg bg-teal-500 text-white rounded-xl">Search</button>
+            
+            </form>
+
+        
+                <hr class="my-4">
+
+                
+                <ul>
+                    <div class="mt-2 mb-2 border bg-gray-100 rounded-xl">
+                        <p class="font-semibold">Size:</p>
+                        {% for category in categories %}
+                        <li class="py-2 px-2 rounded-xl {% if category.id == category_id %} bg-gray-200 {% endif %}">
+                            <a href="{% url 'home:buy' %}?query={{ query }}&category={{ category.id}}">{{ category.name }}</a>
+                        </li>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mt-2 mb-2 border bg-gray-100 rounded-xl">
+                        <p class="font-semibold">Make:</p>
+                        {% for brand in brands %}
+                        <li class="py-2 px-2 rounded-xl {% if brand.id == brand_id %} bg-gray-200 {% endif %}">
+                            <a href="{% url 'home:buy' %}?query={{ query }}&brand={{ brand.id}}">{{ brand.name }}</a>
+                        </li>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mt-2 mb-2 border bg-gray-100 rounded-xl">
+                        <p class="font-semibold">Engine Capacity(CC):</p>
+                            {% for engine_capacity in engine %}
+                            <li class="py-2 px-2 rounded-xl {% if engine.id == engine_capacity_id %} bg-gray-200 {% endif %}">
+                                <a href="{% url 'home:buy' %}?query={{ query }}&engine_capacity={{ engine_capacity.id}}">{{ engine_capacity.name }}</a>
+                            </li>
+                            {% endfor%}
+                    </div>
+                    
+                </ul>
+                <hr class="my-4">
+                <p class="font-semibold">Clear Filters</p>
+
+                <ul>
+                    <li>
+                        <a href="{% url 'home:buy' %}" class="mt-2 py-4 px-8 inline-block bg-yellow-500 text-lg rounded-xl text-white">Clear</a>
+                    </li>
+                </ul>
+        
+            </div>
+
+        <!--list of cars on sale-->
+        <div class="col-span-3">
+                                    
+              
+              <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+                <h2 class="mb-12 text-2xl text-center">Cars and more Cars!!</h2>
+                <div class="grid grid-cols-3 gap-3">
+                    {% for car in cars %}
+                  <div class="border border-gray-300 rounded-xl hover:border-4 border-blue-500 transition duration-300 ease-in-out">
+                    <a href="{% url 'sell:detail' car.id %}">  
+                      <div>
+                      
+                            <img src="{{ car.image.url }}" class="rounded-t-xl">
+                      </div>
+                        <div class="p-6 bg-white rounded-b-xl">
+                            <h2 class="text-2xl">{{ car.name }}</h2>
+                            <p class="text-gray-500">Price: {{ car.price }}</p>
+                            <p class = 'text-gray-500'>Cc: {{ car.engine_capacity }}</p>
+                        </div>
+                      
+                    </a>
+                      
+                  </div>
+                    {% endfor %}
+              </div>
+        </div>
+    </div>
+
+{% endblock %}

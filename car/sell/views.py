@@ -14,26 +14,24 @@ def detail(request, pk):
     return render(request, 'detail.html',context)
 
 @ login_required
-def sell(request):
-   if request.method == 'POST':
+def new(request):
+    if request.method =='POST':
         form = NewCarForm(request.POST, request.FILES)
 
         if form.is_valid():
-            car = form.save(commit=False)
-            car.created_by = request.user
-            car.save()
+            item = form.save(commit=False)
+            item.created_by = request.user
+            item.save()
 
-            return redirect( 'buy.html', pk=car.id)
-   else:
+            return redirect('sell:detail', pk=item.id)
+    else:
         form = NewCarForm()
-        
+     
 
-        context = {
-            'form':form,
-            'title':'New Car',
-        }
-
-        return render(request, 'sell.html', context)
+    return render(request, 'sell.html',{
+        'form':form,
+        'title':'New Item'
+    })
 
 
 def edit(request, pk):
