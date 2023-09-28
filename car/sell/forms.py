@@ -26,7 +26,7 @@ class NewCarForm(forms.ModelForm):
             'brand':forms.Select(attrs={
                'class':'w-100px py-5 px-5 rounded-xl text-black-700 rounded-xl border'
             }),
-            'Engine Capanity':forms.Select(attrs={
+            'Engine Capacity':forms.Select(attrs={
                'class':'w-70px py-2 px-2 rounded-xl border w-20px'
             })
             

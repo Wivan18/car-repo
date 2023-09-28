@@ -3,6 +3,8 @@
 {% endblock %}
 
 {% block content %}
+
+
     <div class="pb-6 grid grid-cols-4 gap-4 bg-gray-200">
         <div class="col-span-1 mt-6 ">
             <form method="get" action="{% url 'home:buy' %}">
@@ -59,28 +61,30 @@
         <div class="col-span-3">
                                     
               
-              <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+            <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
                 <h2 class="mb-12 text-2xl text-center">Cars and more Cars!!</h2>
                 <div class="grid grid-cols-3 gap-3">
                     {% for car in cars %}
-                  <div class="border border-gray-300 rounded-xl hover:border-4 border-blue-500 transition duration-300 ease-in-out">
-                    <a href="{% url 'sell:detail' car.id %}">  
-                      <div>
-                      
-                            <img src="{{ car.image.url }}" class="rounded-t-xl">
-                      </div>
-                        <div class="p-6 bg-white rounded-b-xl">
-                            <h2 class="text-2xl">{{ car.name }}</h2>
-                            <p class="text-gray-500">Price: {{ car.price }}</p>
-                            <p class = 'text-gray-500'>Cc: {{ car.engine_capacity }}</p>
+                    <div class="border border-gray-300 rounded-xl hover:border-4 border-blue-500 transition duration-300 ease-in-out">
+                        <a href="{% url 'sell:detail' car.id %}">  
+                        <div>
+                        
+                                <img src="{{ car.image.url }}" class="rounded-t-xl">
                         </div>
-                      
-                    </a>
-                      
-                  </div>
+                            <div class="p-6 bg-white rounded-b-xl">
+                                <h2 class="text-2xl">{{ car.name }}</h2>
+                                <p class="text-gray-500">Price: {{ car.price }}</p>
+                                <p class = 'text-gray-500'>Cc: {{ car.engine_capacity }}</p>
+                            </div>
+                        
+                        </a>
+                        
+                    </div>
                     {% endfor %}
               </div>
+            </div>
         </div>
     </div>
+
 
 {% endblock %}

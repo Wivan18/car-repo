@@ -14,23 +14,22 @@ def detail(request, pk):
     return render(request, 'detail.html',context)
 
 @ login_required
-def new(request):
+def new(request):# Check on this again
     if request.method =='POST':
         form = NewCarForm(request.POST, request.FILES)
 
         if form.is_valid():
-            item = form.save(commit=False)
-            item.created_by = request.user
-            item.save()
+            car = form.save(commit=False)
+            car.created_by = request.user
+            car.save()
 
-            return redirect('sell:detail', pk=item.id)
+            return redirect('sell:detail', pk=car.id)
     else:
         form = NewCarForm()
      
 
     return render(request, 'sell.html',{
         'form':form,
-        'title':'New Item'
     })
 
 

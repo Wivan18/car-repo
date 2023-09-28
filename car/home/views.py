@@ -45,7 +45,7 @@ def buy2(request):
         cars = cars.filter(engine_capacity_id=engine_capacity_id)
 
     if query:
-        cars = cars.filter(name__icontains=query) | Q(description__icontains=query)
+        cars = cars.filter(name__icontains=query)
 
     context = {
         'cars':cars,
@@ -55,11 +55,7 @@ def buy2(request):
         'engine':engine,
         'category_id':int(category_id),
         'brand_id':int(brand_id),
-        'engine_capacity_id':int(engine_capacity_id),
-
-
-        
-        
+        'engine_capacity_id':int(engine_capacity_id),      
     }
 
     return render(request, 'buy2.html', context)
@@ -75,11 +71,6 @@ def buy(request):
 
     return render(request, 'buy.html',context)
     
-
-
-def sell(request):
-    return render(request, 'sell.html')
-
 
 
 
